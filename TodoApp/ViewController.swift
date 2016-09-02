@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     var jsonArray:NSMutableArray?
     var newArray: Array<String> = []
+    var idArray: Array<String> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         
         // Do any additional setup after loading the view, typically from a nib.
+            }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("downloadAndUpdate")
+        downloadAndUpdate()
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            print("ID is \(idArray[indexPath.row])")
+            
+            Alamofire.request(.DELETE, "https://intense-bastion-31010.herokuapp.com/todo/\(idArray[indexPath.row])")
+            downloadAndUpdate()
+            
+        }
+    }
+    func downloadAndUpdate() {
+        
+        newArray.removeAll()
+        idArray.removeAll()
+        
         Alamofire.request(.GET, "https://intense-bastion-31010.herokuapp.com/todo") .responseJSON { response in
             print(response.request)  // 原始的 URL 要求
             print(response.response) // URL 回應
@@ -35,22 +62,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let JSON = response.result.value {
                 self.jsonArray = JSON as? NSMutableArray
                 for item in self.jsonArray!{
-                    if let name = item["name"], myName = name as? String{
+                    if let name = item["name"], myName = name as? String, let id = item["_id"], myId = id as? String{
                         print(myName)
                         self.newArray.append(myName)
+                        self.idArray.append(myId)
                     }
                 }
                 
                 self.tableView.reloadData()
-//                print("JSON: \(JSON)")
+                //                print("JSON: \(JSON)")
             }
         }
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.newArray.count
@@ -59,10 +84,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("mycell", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel?.text = self.newArray[indexPath.row]
+        cell.detailTextLabel?.text = "haha"
         return cell
     }
+    
+    
     
 
 

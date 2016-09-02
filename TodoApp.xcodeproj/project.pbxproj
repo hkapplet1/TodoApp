@@ -13,6 +13,7 @@
 		9403425E1D753E0600F8F4F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9403425C1D753E0600F8F4F6 /* Main.storyboard */; };
 		940342601D753E0600F8F4F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9403425F1D753E0600F8F4F6 /* Assets.xcassets */; };
 		940342631D753E0600F8F4F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940342611D753E0600F8F4F6 /* LaunchScreen.storyboard */; };
+		94CA49711D79360C002A0D13 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CA49701D79360C002A0D13 /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		9403425F1D753E0600F8F4F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		940342621D753E0600F8F4F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		940342641D753E0600F8F4F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94CA49701D79360C002A0D13 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				940342581D753E0600F8F4F6 /* AppDelegate.swift */,
+				94CA49701D79360C002A0D13 /* AddViewController.swift */,
 				9403425A1D753E0600F8F4F6 /* ViewController.swift */,
 				9403425C1D753E0600F8F4F6 /* Main.storyboard */,
 				9403425F1D753E0600F8F4F6 /* Assets.xcassets */,
@@ -212,6 +215,7 @@
 			files = (
 				9403425B1D753E0600F8F4F6 /* ViewController.swift in Sources */,
 				940342591D753E0600F8F4F6 /* AppDelegate.swift in Sources */,
+				94CA49711D79360C002A0D13 /* AddViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
